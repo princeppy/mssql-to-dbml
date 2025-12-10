@@ -95,7 +95,8 @@ async function generateDBML(options) {
             schemaFilter = `AND t.TABLE_SCHEMA NOT IN (${excludeSchemas.map(s => `'${s}'`).join(',')})`;
         }
         
-        const result = await sql.query`
+        // Build query as string with interpolated schema filter
+        const tableQuery = `
             SELECT 
                 t.TABLE_SCHEMA,
                 t.TABLE_NAME,
@@ -139,7 +140,9 @@ async function generateDBML(options) {
             WHERE t.TABLE_TYPE = 'BASE TABLE'
                 ${schemaFilter}
             ORDER BY t.TABLE_SCHEMA, t.TABLE_NAME, c.ORDINAL_POSITION
-        `.replace('${schemaFilter}', schemaFilter);
+        `;
+        
+        const result = await sql.query(tableQuery);
         
         let output = [];
         output.push(`// Generated from database: ${config.database}`);
