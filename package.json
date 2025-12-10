@@ -1,0 +1,19 @@
+{
+  "name": "mssql-to-dbml",
+  "version": "1.0.0",
+  "description": "Generate DBML from Microsoft SQL Server databases",
+  "main": "index.js",
+  "bin": {
+    "mssql-to-dbml": "./cli.js"
+  },
+  "scripts": {
+    "test": "node cli.js --help"
+  },
+  "keywords": ["mssql", "dbml", "database", "schema", "sql-server"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "mssql": "^11.0.1",
+    "commander": "^12.1.0"
+  }
+}
