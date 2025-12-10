@@ -39,45 +39,43 @@ trap cleanup EXIT
 
 # Help function
 show_help() {
-    cat << EOF
-${CYAN}mssql-to-dbml${NC} - Generate DBML from Microsoft SQL Server
-
-${YELLOW}USAGE:${NC}
-    curl -sSL https://raw.githubusercontent.com/princeppy/mssql-to-dbml/main/install.sh | bash -s -- [OPTIONS]
-
-${YELLOW}OPTIONS:${NC}
-    -h, --host HOST               Server host (default: localhost)
-    -p, --port PORT               Server port (default: 1433)
-    -d, --database DATABASE       Database name ${RED}(required)${NC}
-    -u, --user USER               Username (default: sa)
-    -P, --password PASSWORD       Password ${RED}(required)${NC}
-    -o, --output FILE             Output file (default: <database>.dbml)
-    -i, --include-schemas LIST    Include only these schemas (comma-separated)
-    -e, --exclude-schemas LIST    Exclude these schemas (default: sys,INFORMATION_SCHEMA)
-    -v, --verbose                 Show detailed output
-    --help                        Show this help message
-
-${YELLOW}EXAMPLES:${NC}
-    # Basic usage
-    curl -sSL https://raw.githubusercontent.com/princeppy/mssql-to-dbml/main/install.sh | bash -s -- \\
-      -h localhost -p 5433 -d MyDB -u sa -P 'password'
-
-    # Include only specific schemas
-    curl -sSL https://raw.githubusercontent.com/princeppy/mssql-to-dbml/main/install.sh | bash -s -- \\
-      -d MyDB -P 'pass' -i "dbo,custom"
-
-    # With custom output file
-    curl -sSL https://raw.githubusercontent.com/princeppy/mssql-to-dbml/main/install.sh | bash -s -- \\
-      -h localhost -p 5433 -d MyDB -P 'pass' -o schema.dbml
-
-${YELLOW}REQUIREMENTS:${NC}
-    - Node.js 14+ (will use npx if available)
-    - OR the script will install dependencies temporarily
-
-${YELLOW}REPOSITORY:${NC}
-    https://github.com/princeppy/mssql-to-dbml
-
-EOF
+    echo -e "${CYAN}mssql-to-dbml${NC} - Generate DBML from Microsoft SQL Server"
+    echo ""
+    echo -e "${YELLOW}USAGE:${NC}"
+    echo "    curl -sSL https://raw.githubusercontent.com/princeppy/mssql-to-dbml/main/install.sh | bash -s -- [OPTIONS]"
+    echo ""
+    echo -e "${YELLOW}OPTIONS:${NC}"
+    echo "    -h, --host HOST               Server host (default: localhost)"
+    echo "    -p, --port PORT               Server port (default: 1433)"
+    echo -e "    -d, --database DATABASE       Database name ${RED}(required)${NC}"
+    echo "    -u, --user USER               Username (default: sa)"
+    echo -e "    -P, --password PASSWORD       Password ${RED}(required)${NC}"
+    echo "    -o, --output FILE             Output file (default: <database>.dbml)"
+    echo "    -i, --include-schemas LIST    Include only these schemas (comma-separated)"
+    echo "    -e, --exclude-schemas LIST    Exclude these schemas (default: sys,INFORMATION_SCHEMA)"
+    echo "    -v, --verbose                 Show detailed output"
+    echo "    --help                        Show this help message"
+    echo ""
+    echo -e "${YELLOW}EXAMPLES:${NC}"
+    echo "    # Basic usage"
+    echo "    curl -sSL https://raw.githubusercontent.com/princeppy/mssql-to-dbml/main/install.sh | bash -s -- \\"
+    echo "      -h localhost -p 5433 -d MyDB -u sa -P 'password'"
+    echo ""
+    echo "    # Include only specific schemas"
+    echo "    curl -sSL https://raw.githubusercontent.com/princeppy/mssql-to-dbml/main/install.sh | bash -s -- \\"
+    echo "      -d MyDB -P 'pass' -i \"dbo,custom\""
+    echo ""
+    echo "    # With custom output file"
+    echo "    curl -sSL https://raw.githubusercontent.com/princeppy/mssql-to-dbml/main/install.sh | bash -s -- \\"
+    echo "      -h localhost -p 5433 -d MyDB -P 'pass' -o schema.dbml"
+    echo ""
+    echo -e "${YELLOW}REQUIREMENTS:${NC}"
+    echo "    - Node.js 14+ (will use npx if available)"
+    echo "    - OR the script will install dependencies temporarily"
+    echo ""
+    echo -e "${YELLOW}REPOSITORY:${NC}"
+    echo "    https://github.com/princeppy/mssql-to-dbml"
+    echo ""
 }
 
 # Parse arguments
